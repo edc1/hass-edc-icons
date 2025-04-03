@@ -21,7 +21,7 @@ if (!window.frontendVersion || window.frontendVersion < 20200519.0) {
   // ha-iconset-svg (Up to Home Assistant 0.109):
   const iconset = document.createElement("ha-iconset-svg");
   iconset.name = "edc";
-  iconset.size = "1";
+  iconset.size = "2";
 
   let iconsetHTML = "";
   for (let key in EDC_ICONS_MAP) {
