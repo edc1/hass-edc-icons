@@ -6,7 +6,7 @@ from string import Template
 from xml.dom.minidom import Document, parse
 
 SVG = "svg"
-OUTFILE = join("dist", "hass-bha-icons.js")
+OUTFILE = join("dist", "hass-edc-icons.js")
 
 
 def get_path(dom: Document) -> str:
@@ -36,23 +36,23 @@ icons = {
 }
 
 template = Template(
-    """const BHA_ICONS_MAP = $icons;
+    """const EDC_ICONS_MAP = $icons;
 
 async function getIcon(name) {
-  return {path: BHA_ICONS_MAP[name]?.path};
+  return {path: EDC_ICONS_MAP[name]?.path};
 }
 async function getIconList() {
-  return Object.entries(BHA_ICONS_MAP).map(([icon, content]) => ({
+  return Object.entries(EDC_ICONS_MAP).map(([icon, content]) => ({
     name: icon,
     keywords: content.keywords,
   }));
 }
 
 window.customIcons = window.customIcons || {};
-window.customIcons["bha"] = { getIcon, getIconList };
+window.customIcons["edc"] = { getIcon, getIconList };
 
 window.customIconsets = window.customIconsets || {};
-window.customIconsets["bha"] = getIcon;
+window.customIconsets["edc"] = getIcon;
 """
 )
 
