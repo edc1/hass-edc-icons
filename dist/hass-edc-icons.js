@@ -9,6 +9,9 @@ async function getIcon(name) {
   return {path: EDC_ICONS_MAP[name]?.path};
 }
 
+window.customIconsets = window.customIconsets || {};
+window.customIconsets["edc"] = getIcon;
+
 async function getIconList() {
   return Object.entries(EDC_ICONS_MAP).map(([icon, content]) => ({
     name: icon,
@@ -16,11 +19,8 @@ async function getIconList() {
   }));
 }
 
-window.customIcons = window.customIcons || {};
-window.customIcons["edc"] = { getIcon, getIconList };
-
-window.customIconsets = window.customIconsets || {};
-window.customIconsets["edc"] = getIcon;
+// window.customIcons = window.customIcons || {};
+// window.customIcons["edc"] = { getIcon, getIconList };
 
 if (!window.frontendVersion || window.frontendVersion < 20200519.0) {
   // ha-iconset-svg (Up to Home Assistant 0.109):
